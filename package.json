@@ -1,0 +1,27 @@
+{
+  "name": "metadata-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdadam/metadata-crawler.git"
+  },
+  "keywords": ["url", "metadata", "open graph", "canonical url", "meta tags"],
+  "author": "Adam Beres-Deak <me@bdadam.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bdadam/metadata-crawler/issues"
+  },
+  "homepage": "https://github.com/bdadam/metadata-crawler#readme",
+  "dependencies": {
+    "scraperjs": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4"
+  }
+}

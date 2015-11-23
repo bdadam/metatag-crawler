@@ -1,7 +1,5 @@
 var URL = require('url');
-var LRU = require("lru-cache");
 var scraperjs = require('scraperjs');
-var cache = LRU({max: 1000, maxAge: 1000 * 60 * 60 * 24});
 
 module.exports = scrapeUrl;
 
@@ -11,12 +9,6 @@ function scrapeUrl(url, cb) {
 
     if (parsedUrl.protocol !== 'http:' && parsedUrl.protocol !== 'https:') {
         return cb(new Error('Invalid URL.'));
-    }
-
-    var data = cache.get(url);
-
-    if (data) {
-        return cb(null, data);
     }
 
     scraperjs
@@ -35,7 +27,6 @@ function scrapeUrl(url, cb) {
             return data;
         },
         function (result) {
-            cache.set(url, result);
             cb(null, result);
         });
 }
