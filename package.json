@@ -1,5 +1,5 @@
 {
-  "name": "metadata-crawler",
+  "name": "metatag-crawler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/bdadam/metadata-crawler.git"
   },
-  "keywords": ["url", "metadata", "open graph", "canonical url", "meta tags"],
+  "keywords": ["meta tag", "url", "metadata", "open graph", "canonical url", "meta tags"],
   "author": "Adam Beres-Deak <me@bdadam.com>",
   "license": "MIT",
   "bugs": {
