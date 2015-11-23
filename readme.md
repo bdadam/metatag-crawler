@@ -1,5 +1,13 @@
 # metadata-crawler
 
+This is a simple node.js module for scraping meta information from web pages.
+
+## Install
+
+```
+npm install --save metatag-crawler
+```
+
 ## Usage
 ```JavaScript
 var scrape = require('metatag-crawler');
