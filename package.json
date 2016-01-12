@@ -1,6 +1,6 @@
 {
   "name": "metatag-crawler",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/bdadam/metadata-crawler.git"
   },
-  "keywords": ["meta tag", "url", "metadata", "open graph", "canonical url", "meta tags"],
+  "keywords": [
+    "meta tag",
+    "url",
+    "metadata",
+    "open graph",
+    "canonical url",
+    "meta tags"
+  ],
   "author": "Adam Beres-Deak <me@bdadam.com>",
   "license": "MIT",
   "bugs": {
@@ -22,6 +29,9 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
-    "mocha": "^2.3.4"
+    "chai-things": "^0.2.0",
+    "cheerio": "^0.19.0",
+    "mocha": "^2.3.4",
+    "nock": "^5.2.1"
   }
 }
