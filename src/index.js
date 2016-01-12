@@ -1,5 +1,6 @@
 var util = require('util');
-var scraperjs = require('scraperjs');
+var request = require('request');
+var cheerio = require('cheerio');
 
 var compose = require('./composer');
 var resolveUrlsInObj = require('./urlresolve');
@@ -9,23 +10,21 @@ module.exports = function scrapeUrl(url, options, cb) {
         cb = options;
     }
 
-    scraperjs
-        .StaticScraper
-        .create(url)
-        .scrape(function ($) {
-            return compose($, url)
-        })
-        .then(function(crawlingResult) {
-            if (options.resolveUrls !== false) {
-                resolveUrlsInObj(crawlingResult, url);
-            }
+    var options = {
+        url: url,
+        headers: { 'User-Agent': options.userAgent || 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.80 Safari/537.36' }
+    };
 
-            return crawlingResult;
-        })
-        .then(function (crawlingResult) {
-            cb(null, crawlingResult);
-        })
-        .catch(function(err) {
-            cb(err);
-        });
+    request.get(options, function(err, response, body) {
+        if (err) { return cb(err); }
+
+        var $ = cheerio.load(body);
+        var result = compose($, url);
+
+        if (options.resolveUrls !== false) {
+            resolveUrlsInObj(result, url);
+        }
+
+        cb(null, result);
+    });
 };

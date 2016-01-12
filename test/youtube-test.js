@@ -4,7 +4,7 @@ var nock = require('nock');
 var expect = require('chai').expect;
 var crawl = require('../src');
 
-describe('When crawling youtube video pages', function () {
+describe('When crawling youtube video page', function () {
     var crawlResults;
 
     before(function(done) {
@@ -17,9 +17,6 @@ describe('When crawling youtube video pages', function () {
     });
 
     it('Results should be fine', function () {
-        console.log(JSON.stringify(crawlResults));
-        // console.log(require('util').inspect(crawlResults, { depth: null }));
-
         expect(crawlResults).to.have.all.keys('meta', 'images', 'og');
         expect(crawlResults.meta.title).to.equal('Me at the zoo - YouTube');
         expect(crawlResults.og.title).to.equal('Me at the zoo');
@@ -28,7 +25,7 @@ describe('When crawling youtube video pages', function () {
     });
 });
 
-describe('When crawling youtube video pages', function () {
+describe('When crawling youtube home page', function () {
     var crawlResults;
 
     before(function(done) {
