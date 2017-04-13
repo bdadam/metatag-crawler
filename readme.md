@@ -13,7 +13,7 @@ At the moment this module supports:
 ## Install
 
 ```
-npm install --save metatag-crawler
+npm install metatag-crawler --save
 ```
 
 ## Usage
@@ -23,25 +23,6 @@ scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', function(err, data) {});
 
 // if you do not want the relative URLs to be resolved
 scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', { resolveUrls: false }, function(err, data) {});    
-```
-
-## Changes in version 2.x
-
-In version 2 the module does not automatically merge properties from different meta information sources.
-Earlier we used to the the following: `title = opengpraph.title || meta.title` and so on with description and canonical url.
-
-This is no longer the case, we provide all information available on the page. If you need the old behavior, please process the result like this:
-```JavaScript
-scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', function(err, data) {
-    var oldStyleData = {
-        title: data.og.title || data.meta.title,
-        description: data.og.descriptions || data.meta.description,
-        images: og.images,
-        videos: og.videos
-    };
-
-    // ... do what you used to do before with the oldStyleData
-});
 ```
 
 ## Example
@@ -202,5 +183,24 @@ scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', function(err, data) {
         }
     }
     */
+});
+```
+
+## Changes in version 2.x
+
+In version 2 the module does not automatically merge properties from different meta information sources.
+Earlier we used to the the following: `title = opengpraph.title || meta.title` and so on with description and canonical url.
+
+This is no longer the case, we provide all information available on the page. If you need the old behavior, please process the result like this:
+```JavaScript
+scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', function(err, data) {
+    var oldStyleData = {
+        title: data.og.title || data.meta.title,
+        description: data.og.descriptions || data.meta.description,
+        images: og.images,
+        videos: og.videos
+    };
+
+    // ... do what you used to do before with the oldStyleData
 });
 ```
