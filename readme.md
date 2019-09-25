@@ -3,12 +3,12 @@
 This is a simple node.js module for scraping meta information from web pages.
 
 At the moment this module supports:
-* the `<title>` tag in the document head
-* meta[name="description"] tag
-* link[rel="canonical"] tag
-* img elements on the page
-* many [Open Graph](http://ogp.me/) tags (such as: title, description, url, type, image, video)
 
+- the `<title>` tag in the document head
+- meta[name="description"] tag
+- link[rel="canonical"] tag
+- img elements on the page
+- many [Open Graph](http://ogp.me/) tags (such as: title, description, url, type, image, video)
 
 ## Install
 
@@ -17,12 +17,13 @@ npm install metatag-crawler --save
 ```
 
 ## Usage
+
 ```
 var scrape = require('metatag-crawler');
 scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', function(err, data) {});
 
 // if you do not want the relative URLs to be resolved
-scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', { resolveUrls: false }, function(err, data) {});    
+scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', { resolveUrls: false }, function(err, data) {});
 ```
 
 ## Example
@@ -34,7 +35,7 @@ scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', function(err, data) {
     console.log(data.meta.title); // Me at the zoo
     console.log(data.meta.description); // The first video on YouTube. Maybe it's time to go back to the zoo?
     console.log(data.meta.canonical); // https://www.youtube.com/watch?v=jNQXAC9IVRw
-
+    console.log(data.meta.keywords);
     console.log(data);
     /*
     {
@@ -192,6 +193,7 @@ In version 2 the module does not automatically merge properties from different m
 Earlier we used to the the following: `title = opengpraph.title || meta.title` and so on with description and canonical url.
 
 This is no longer the case, we provide all information available on the page. If you need the old behavior, please process the result like this:
+
 ```JavaScript
 scrape('https://www.youtube.com/watch?v=jNQXAC9IVRw', function(err, data) {
     var oldStyleData = {
